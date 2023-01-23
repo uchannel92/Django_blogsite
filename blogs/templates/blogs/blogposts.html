@@ -1,0 +1,23 @@
+{% extends "blogs/base.html" %}
+
+{% block content %}
+
+<p>Posts: </p>
+
+<div style="text-align: center;">
+<a href="{% url 'blogs:new_blog' %}" style="background: darkorange; color: black; font-weight: bold; border-radius: 10px; padding: 6px;">Post new Blog</a>
+</div>
+<ul>
+	{% for blog in blogpost %}
+		<li style="list-style: none;">
+		<p style="font-weight: bold"> {{ blog.title }} </p>
+		<p> {{ blog.text|linebreaks }} </p>
+		<p style="text-align: right;"> Created by {{ blog.owner }}: {{ blog.date_added|date:'d / M / Y - H:i' }} </p>
+		<button> <a href="{% url 'blogs:edit_blogpost' blog.id %}">Edit Post</a></button>
+		</li>
+	{% empty %}
+		<li>No Blog posts have been added yet.</li>
+	{% endfor %}
+</ul>
+
+{% endblock content %}

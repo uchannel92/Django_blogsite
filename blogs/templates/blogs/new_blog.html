@@ -1,0 +1,22 @@
+{% extends "blogs/base.html" %}
+
+{% block content %}
+
+<p>Add new post here: </p>
+
+<form action="{% url 'blogs:new_blog' %}" method="post">
+	{% csrf_token %}
+	<div class="fieldWrapper">
+    <label for="{{ form.title }}">Blog title:</label>
+    {{ form.title }}
+	</div>
+	<div class="fieldWrapper">
+    <label for="{{ form.text }}">Blog text:</label>
+    {{ form.text }}
+	</div>
+		<button style="background: black; color: yellow; font-weight: bold; border-radius: 10px; padding: 6px;">Post Blog
+		</button>
+</form>
+
+
+{% endblock content %}

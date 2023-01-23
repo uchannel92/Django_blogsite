@@ -1,0 +1,15 @@
+<p style="text-align: center; font-size: 20px">
+	<a href="{% url 'blogs:index' %}">Home</a> |
+	<a href="{% url 'blogs:blogposts' %}">Blog Posts</a> |
+	<a href="{% url 'blogs:new_blog' %}">Post New Blog</a> |
+	{% if user.is_authenticated %}
+		Hello, {{ user.username }}!
+	<a href="{% url 'users:logout' %}">Log out</a>
+	{% else %}
+	<a href="{% url 'users:register' %}">Register</a> |
+		<a href="{% url 'users:login' %}">Log in</a>
+	{% endif %}
+</p>
+
+{% block content %}{% endblock content %}
+
