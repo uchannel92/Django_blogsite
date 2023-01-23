@@ -1,7 +1,15 @@
 {% extends "blogs/base.html" %}
 
 
-{% block content %}
-<p style="text-align: center;"> This page will display blog posts saved in the database. 
-</p>
-{% endblock content %}
+{% block page_header %}
+
+<div class="jumbotron">
+    <h1 class="display-4">Add your posts</h1>
+    <p class="lead">On this website you will be able to add your blog posts</p>
+    <hr class="my-4">
+    <p>Welcome and i hope you enjoy your visit here. </p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="{% url 'users:register' %}" role="button">Register here</a>
+    </p>
+</div>
+{% endblock page_header %}
