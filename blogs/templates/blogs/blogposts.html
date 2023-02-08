@@ -6,9 +6,16 @@
 
 {% block content %}
 <div class="container">
-	<p>
-		<a href="{% url 'blogs:new_blog' %}">Add a new post</a>
-	</p>
+	
+	{% if user.is_authenticated %}
+		<p>
+			<a href="{% url 'blogs:new_blog' %}">Add a new post</a>
+		</p>
+	{% else %}
+		<p>
+			<a href="{% url 'users:login' %}">Login to add new post</a>
+		</p>
+	{% endif %}
 
 		{% for blog in blogpost %}
 		<h4>{{ blog.title }}</h4>
