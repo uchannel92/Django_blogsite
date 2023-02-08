@@ -1,22 +1,23 @@
 {% extends "blogs/base.html" %}
 
+{% load bootstrap4 %}
+
+{% block page_header %}
+<div>
+	<h2 class="container">Add new post here: </h2>
+</div>
+{% endblock page_header %}
+
 {% block content %}
+<div class="container">
+	<form action="{% url 'blogs:new_blog' %}" method="post" class="form">
+		{% csrf_token %}
+		{% bootstrap_form form %}
 
-<p>Add new post here: </p>
-
-<form action="{% url 'blogs:new_blog' %}" method="post">
-	{% csrf_token %}
-	<div class="fieldWrapper">
-    <label for="{{ form.title }}">Blog title:</label>
-    {{ form.title }}
-	</div>
-	<div class="fieldWrapper">
-    <label for="{{ form.text }}">Blog text:</label>
-    {{ form.text }}
-	</div>
-		<button style="background: black; color: yellow; font-weight: bold; border-radius: 10px; padding: 6px;">Post Blog
-		</button>
-</form>
-
-
+		{% buttons %}
+			<button name="submit" class="btn btn-primary">Post Blog</button>
+		{% endbuttons %}
+		
+	</form>
+</div>
 {% endblock content %}
